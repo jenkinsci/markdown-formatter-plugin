@@ -3,6 +3,7 @@ package io.jenkins.plugins;
 import hudson.Extension;
 import hudson.markup.MarkupFormatter;
 import hudson.markup.MarkupFormatterDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +24,16 @@ import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.data.MutableDataSet;
 
 public class MarkdownFormatter extends MarkupFormatter {
-    private final HtmlRenderer htmlRenderer;
-    private final Parser markdownParser;
+    private transient HtmlRenderer htmlRenderer = null;
+    private transient Parser markdownParser = null;
     private Logger logger = LoggerFactory.getLogger(MarkdownFormatter.class);
 
     @DataBoundConstructor
     public MarkdownFormatter() {
+    }
+
+    @NotNull
+    private MutableDataSet getOptions() {
         MutableDataSet options = new MutableDataSet();
 
         options.set(Parser.EXTENSIONS, Arrays.asList(
@@ -40,12 +45,19 @@ public class MarkdownFormatter extends MarkupFormatter {
                 EmojiExtension.create()
         ));
         options.set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.GITHUB);
-        this.htmlRenderer = HtmlRenderer.builder(options).escapeHtml(true).build();
-        this.markdownParser = Parser.builder(options).build();
+        return options;
     }
 
     @Override
     public void translate(String markup, Writer output) throws IOException {
+        if (this.htmlRenderer == null) {
+            MutableDataSet options = getOptions();
+            this.htmlRenderer = HtmlRenderer.builder(options).escapeHtml(true).build();
+        }
+        if (this.markdownParser == null) {
+            MutableDataSet options = getOptions();
+            this.markdownParser = Parser.builder(options).build();
+        }
         output.write(htmlRenderer.render(markdownParser.parse(markup)));
     }
 
