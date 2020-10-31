@@ -46,6 +46,14 @@
         <tag>${scmTag}</tag>
     </scm>
 
+    <developers>
+      <developer>
+        <id>halkeye</id>
+        <name>Gavin Mogan</name>
+        <email>jenkins@gavinmogan.com</email>
+      </developer>
+    </developers>
+
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
