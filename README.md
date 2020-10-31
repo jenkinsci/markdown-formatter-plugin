@@ -8,12 +8,12 @@
 
 ## Introduction
 
-Github Flavored Markdown Formatter
+Markdown Formatter
 
 ## Getting started
 
 In Manage Jenkins -> Configure Global Security -> Markup Formatter
-select "Github Flavored Markdown Formatter" from the drop down list.
+select "Markdown Formatter" from the drop down list.
 
 ## Contributing
 
