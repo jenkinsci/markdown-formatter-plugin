@@ -1,5 +1,6 @@
 package io.jenkins.plugins;
 
+import com.vladsch.flexmark.ext.emoji.EmojiImageType;
 import hudson.Extension;
 import hudson.markup.MarkupFormatter;
 import hudson.markup.MarkupFormatterDescriptor;
@@ -39,11 +40,12 @@ public class MarkdownFormatter extends MarkupFormatter {
         options.set(Parser.EXTENSIONS, Arrays.asList(
                 TablesExtension.create(),
                 StrikethroughExtension.create(),
-                GfmUsersExtension.create(),
                 TaskListExtension.create(),
-                GfmIssuesExtension.create(),
+//                GfmUsersExtension.create(),
+//                GfmIssuesExtension.create(),
                 EmojiExtension.create()
         ));
+        options.set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE);
         options.set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.GITHUB);
         return options;
     }

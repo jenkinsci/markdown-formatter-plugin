@@ -1,5 +1,6 @@
 package io.jenkins.plugins;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
@@ -10,9 +11,31 @@ public class MarkdownFormatterTest {
     @Rule
     public JenkinsRule j = new JenkinsRule();
 
+    @Before
+    public void setup() {
+        j.jenkins.setMarkupFormatter(new MarkdownFormatter());
+    }
+
+    @Test
+    public void handlesMarkdown() throws Exception {
+        // basic markdown
+        assertEquals(
+                "<p><em>bold</em></p>",
+                j.jenkins.getMarkupFormatter().translate("*bold*").trim()
+        );
+    }
+
+    @Test
+    public void handlesEmoji() throws Exception {
+        // basic markdown
+        assertEquals(
+                "<p>\uD83D\uDE8C</p>",
+                j.jenkins.getMarkupFormatter().translate(":bus:").trim()
+        );
+    }
+
     @Test
     public void defaultEscaped() throws Exception {
-        j.jenkins.setMarkupFormatter(new MarkdownFormatter());
         // basic markdown
         assertEquals(
                 "<p><em>bold</em></p>",
