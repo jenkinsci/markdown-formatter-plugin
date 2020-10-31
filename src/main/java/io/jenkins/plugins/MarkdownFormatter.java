@@ -65,7 +65,7 @@ public class MarkdownFormatter extends MarkupFormatter {
     public static class DescriptorImpl extends MarkupFormatterDescriptor {
         @Override
         public String getDisplayName() {
-            return "Github Flavored Markdown";
+            return "Github Flavored Markdown Formatter";
         }
     }
 }
