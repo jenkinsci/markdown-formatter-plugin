@@ -25,18 +25,16 @@ import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.data.MutableDataSet;
 
 public class MarkdownFormatter extends MarkupFormatter {
-    private transient HtmlRenderer htmlRenderer = null;
-    private transient Parser markdownParser = null;
-    private Logger logger = LoggerFactory.getLogger(MarkdownFormatter.class);
+    private static HtmlRenderer htmlRenderer = null;
+    private static Parser markdownParser = null;
+    private static MutableDataSet options = new MutableDataSet();
+    private static Logger logger = LoggerFactory.getLogger(MarkdownFormatter.class);
 
     @DataBoundConstructor
     public MarkdownFormatter() {
     }
 
-    @NotNull
-    private MutableDataSet getOptions() {
-        MutableDataSet options = new MutableDataSet();
-
+    static {
         options.set(Parser.EXTENSIONS, Arrays.asList(
                 TablesExtension.create(),
                 StrikethroughExtension.create(),
@@ -47,19 +45,12 @@ public class MarkdownFormatter extends MarkupFormatter {
         ));
         options.set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE);
         options.set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.GITHUB);
-        return options;
+        htmlRenderer = HtmlRenderer.builder(options).escapeHtml(true).build();
+        markdownParser = Parser.builder(options).build();
     }
 
     @Override
     public void translate(String markup, Writer output) throws IOException {
-        if (this.htmlRenderer == null) {
-            MutableDataSet options = getOptions();
-            this.htmlRenderer = HtmlRenderer.builder(options).escapeHtml(true).build();
-        }
-        if (this.markdownParser == null) {
-            MutableDataSet options = getOptions();
-            this.markdownParser = Parser.builder(options).build();
-        }
         output.write(htmlRenderer.render(markdownParser.parse(markup)));
     }
 
