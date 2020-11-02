@@ -47,7 +47,11 @@ public class MarkdownFormatter extends MarkupFormatter {
 
     @Override
     public void translate(String markup, Writer output) throws IOException {
-        output.write(htmlRenderer.render(markdownParser.parse(markup)));
+        if (markup != null) {
+            output.write(htmlRenderer.render(markdownParser.parse(markup)));
+        } else {
+            output.write("");
+        }
     }
 
     @Extension
