@@ -48,12 +48,12 @@ public class MarkdownFormatterTest {
         );
         // basic link
         assertEquals(
-                "<p><a href=\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\"><img src=\"http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg\" alt=\"IMAGE ALT TEXT HERE\" /></a></p>",
+                "<p><a rel=\"nofollow\" href=\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\"><img src=\"http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg\" alt=\"IMAGE ALT TEXT HERE\" /></a></p>",
                 j.jenkins.getMarkupFormatter().translate("[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)").trim()
         );
         // basic xss gets escaped
         assertEquals(
-                "<p>some text</p>",
+                "<p><a rel=\"nofollow\" href=\"\">some text</a></p>",
                 j.jenkins.getMarkupFormatter().translate("[some text](javascript:alert('xss'))").trim()
         );
         // mixed xss gets escaped
@@ -64,6 +64,11 @@ public class MarkdownFormatterTest {
                         "</blockquote>",
                 j.jenkins.getMarkupFormatter().translate("hello <a name=\"n\"\n" +
                         "> href=\"javascript:alert('xss')\">*you*</a>").trim()
+        );
+        // more complex XSS
+        assertEquals(
+                "<p>Payload: <a rel=\"nofollow\" href=\"\">click me</a></p>",
+                j.jenkins.getMarkupFormatter().translate("Payload: [click me](javascript&#X3a;alert`XSS`)").trim()
         );
     }
 

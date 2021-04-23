@@ -1,6 +1,5 @@
 package io.jenkins.plugins;
 
-import com.vladsch.flexmark.ext.emoji.EmojiImageType;
 import hudson.Extension;
 import hudson.markup.MarkupFormatter;
 import hudson.markup.MarkupFormatterDescriptor;
@@ -11,44 +10,44 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
+import java.util.List;
 
-import com.vladsch.flexmark.ext.emoji.EmojiExtension;
-import com.vladsch.flexmark.ext.emoji.EmojiShortcutType;
-import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
-import com.vladsch.flexmark.ext.gfm.tasklist.TaskListExtension;
-import com.vladsch.flexmark.ext.tables.TablesExtension;
-import com.vladsch.flexmark.html.HtmlRenderer;
-import com.vladsch.flexmark.parser.Parser;
-import com.vladsch.flexmark.util.data.MutableDataSet;
+import com.vdurmont.emoji.EmojiParser;
+
+import org.commonmark.node.*;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+import org.commonmark.ext.autolink.AutolinkExtension;
+import org.commonmark.ext.gfm.strikethrough.StrikethroughExtension;
+import org.commonmark.ext.gfm.tables.TablesExtension;
+import org.commonmark.ext.ins.InsExtension;
 
 public class MarkdownFormatter extends MarkupFormatter {
     private static HtmlRenderer htmlRenderer = null;
     private static Parser markdownParser = null;
-    private static MutableDataSet options = new MutableDataSet();
+    // private static MutableDataSet options = new MutableDataSet();
 
     @DataBoundConstructor
     public MarkdownFormatter() {
     }
 
+
     static {
-        options.set(Parser.EXTENSIONS, Arrays.asList(
-                TablesExtension.create(),
-                StrikethroughExtension.create(),
-                TaskListExtension.create(),
-//                GfmUsersExtension.create(),
-//                GfmIssuesExtension.create(),
-                EmojiExtension.create()
-        ));
-        options.set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE);
-        options.set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.GITHUB);
-        htmlRenderer = HtmlRenderer.builder(options).escapeHtml(true).build();
-        markdownParser = Parser.builder(options).build();
+        List<org.commonmark.Extension> extensions = Arrays.asList(
+            TablesExtension.create(),
+            AutolinkExtension.create(),
+            StrikethroughExtension.create(),
+            InsExtension.create()
+        );
+        htmlRenderer = HtmlRenderer.builder().extensions(extensions).escapeHtml(true).sanitizeUrls(true).build();
+        markdownParser = Parser.builder().extensions(extensions).build();
     }
 
     @Override
     public void translate(String markup, Writer output) throws IOException {
         if (markup != null) {
-            output.write(htmlRenderer.render(markdownParser.parse(markup)));
+            Node document = markdownParser.parse(EmojiParser.parseToUnicode(markup));
+            output.write(htmlRenderer.render(document));
         } else {
             output.write("");
         }
