@@ -15,6 +15,7 @@
         <revision>0.2.1</revision>
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.235.1</jenkins.version>
+        <commonmark.version>0.17.2</commonmark.version>
         <java.level>8</java.level>
     </properties>
     <name>Markdown Formatter</name>
@@ -72,32 +73,32 @@
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark</artifactId>
-            <version>0.17.1</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark-ext-gfm-tables</artifactId>
-            <version>0.17.1</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark-ext-autolink</artifactId>
-            <version>0.17.1</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark-ext-gfm-strikethrough</artifactId>
-            <version>0.17.1</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark-ext-heading-anchor</artifactId>
-            <version>0.17.1</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark-ext-ins</artifactId>
-            <version>0.17.1</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vdurmont</groupId>
