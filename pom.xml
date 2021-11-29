@@ -15,7 +15,7 @@
         <revision>0.2.1</revision>
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.235.1</jenkins.version>
-        <commonmark.version>0.18.0</commonmark.version>
+        <commonmark.version>0.18.1</commonmark.version>
         <java.level>8</java.level>
     </properties>
     <name>Markdown Formatter</name>
