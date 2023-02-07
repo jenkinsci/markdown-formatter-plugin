@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.40</version>
+        <version>4.54</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.plugins</groupId>
@@ -14,9 +14,8 @@
     <properties>
         <revision>0.2.1</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.235.1</jenkins.version>
+        <jenkins.version>2.361.4</jenkins.version>
         <commonmark.version>0.21.0</commonmark.version>
-        <java.level>8</java.level>
     </properties>
     <name>Markdown Formatter</name>
     <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
@@ -25,8 +24,8 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.235.x</artifactId>
-                <version>918.vae501d2cdc99</version>
+                <artifactId>bom-2.361.x</artifactId>
+                <version>1798.vc671fe94856f</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -41,7 +40,7 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
+        <connection>scm:git:https://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
         <tag>${scmTag}</tag>
