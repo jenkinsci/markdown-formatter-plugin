@@ -8,7 +8,8 @@
 
 ## Introduction
 
-Markdown Formatter
+Markdown Formatter allows plain text to be converted into HTML in Jenkins.
+The formatter uses [CommonMark](https://commonmark.org/).
 
 ## Getting started
 
@@ -22,4 +23,3 @@ Refer to our [contribution guidelines](https://github.com/jenkinsci/.github/blob
 ## LICENSE
 
 Licensed under MIT, see [LICENSE](LICENSE.md)
-
