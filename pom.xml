@@ -52,6 +52,11 @@
         <name>Gavin Mogan</name>
         <email>jenkins@gavinmogan.com</email>
       </developer>
+      <developer>
+        <id>markewaite</id>
+        <name>Mark Waite</name>
+        <email>mark.earl.waite@gmail.com</email>
+      </developer>
     </developers>
 
     <repositories>
