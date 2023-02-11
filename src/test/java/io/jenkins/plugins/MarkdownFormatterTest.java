@@ -72,4 +72,12 @@ public class MarkdownFormatterTest {
         );
     }
 
+    @Test
+    public void handlesNull() throws Exception {
+        assertEquals(
+                "",
+                j.jenkins.getMarkupFormatter().translate(null).trim()
+        );
+    }
+
 }
