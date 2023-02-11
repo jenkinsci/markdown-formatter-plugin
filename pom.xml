@@ -16,6 +16,8 @@
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.361.4</jenkins.version>
         <commonmark.version>0.21.0</commonmark.version>
+        <spotbugs.effort>Max</spotbugs.effort>
+        <spotbugs.threshold>Low</spotbugs.threshold>
     </properties>
     <name>Markdown Formatter</name>
     <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
