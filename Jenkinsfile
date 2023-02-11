@@ -1,10 +1,14 @@
-/*
- See the documentation for more options:
- https://github.com/jenkins-infra/pipeline-library/
-*/
+#!/usr/bin/env groovy
+
+/* `buildPlugin` step provided by: https://github.com/jenkins-infra/pipeline-library */
 buildPlugin(
-  useContainerAgent: true, // Set to `false` if you need to use Docker for containerized tests
+  // Container agents start faster and are easier to administer
+  useContainerAgent: true,
+  // Show failures on all configurations
+  failFast: false,
+  // Test Java 11 with minimum Jenkins version, Java 17 with a more recent version
   configurations: [
-    [platform: 'linux', jdk: 11],
-    [platform: 'windows', jdk: 17],
-])
+    [platform: 'linux',   jdk: '11'], // Linux first for coverage report on ci.jenkins.io
+    [platform: 'windows', jdk: '17', jenkins: '2.390'],
+  ]
+)
