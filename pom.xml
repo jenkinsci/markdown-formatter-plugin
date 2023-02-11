@@ -9,11 +9,11 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>markdown-formatter</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
         <revision>0.2.1</revision>
-        <changelist>-SNAPSHOT</changelist>
+	<changelist>999999-SNAPSHOT</changelist>
         <jenkins.version>2.361.4</jenkins.version>
         <commonmark.version>0.21.0</commonmark.version>
         <spotbugs.effort>Max</spotbugs.effort>
