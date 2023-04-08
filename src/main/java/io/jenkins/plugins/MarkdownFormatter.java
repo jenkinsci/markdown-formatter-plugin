@@ -1,26 +1,21 @@
 package io.jenkins.plugins;
 
+import com.vdurmont.emoji.EmojiParser;
 import hudson.Extension;
 import hudson.markup.MarkupFormatter;
 import hudson.markup.MarkupFormatterDescriptor;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
 import java.util.List;
-
-import com.vdurmont.emoji.EmojiParser;
-
-import org.commonmark.node.*;
-import org.commonmark.parser.Parser;
-import org.commonmark.renderer.html.HtmlRenderer;
 import org.commonmark.ext.autolink.AutolinkExtension;
 import org.commonmark.ext.gfm.strikethrough.StrikethroughExtension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
 import org.commonmark.ext.ins.InsExtension;
+import org.commonmark.node.*;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+import org.kohsuke.stapler.DataBoundConstructor;
 
 public class MarkdownFormatter extends MarkupFormatter {
     private static HtmlRenderer htmlRenderer = null;
@@ -28,18 +23,19 @@ public class MarkdownFormatter extends MarkupFormatter {
     // private static MutableDataSet options = new MutableDataSet();
 
     @DataBoundConstructor
-    public MarkdownFormatter() {
-    }
-
+    public MarkdownFormatter() {}
 
     static {
         List<org.commonmark.Extension> extensions = Arrays.asList(
-            TablesExtension.create(),
-            AutolinkExtension.create(),
-            StrikethroughExtension.create(),
-            InsExtension.create()
-        );
-        htmlRenderer = HtmlRenderer.builder().extensions(extensions).escapeHtml(true).sanitizeUrls(true).build();
+                TablesExtension.create(),
+                AutolinkExtension.create(),
+                StrikethroughExtension.create(),
+                InsExtension.create());
+        htmlRenderer = HtmlRenderer.builder()
+                .extensions(extensions)
+                .escapeHtml(true)
+                .sanitizeUrls(true)
+                .build();
         markdownParser = Parser.builder().extensions(extensions).build();
     }
 
