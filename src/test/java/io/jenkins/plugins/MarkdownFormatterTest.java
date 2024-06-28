@@ -13,7 +13,23 @@ public class MarkdownFormatterTest {
 
     @Before
     public void setup() {
-        j.jenkins.setMarkupFormatter(new MarkdownFormatter());
+        j.jenkins.setMarkupFormatter(new MarkdownFormatter(false));
+    }
+
+    @Test
+    public void handlesSyntaxHighlightingEnabled() {
+        MarkdownFormatter formatter = new MarkdownFormatter(false);
+
+        assertFalse("Syntax highlighting should be enabled", formatter.isDisableSyntaxHighlighting());
+        assertEquals("Code mirror code should be set", "markdown", formatter.getCodeMirrorMode());
+    }
+
+    @Test
+    public void handlesSyntaxHighlightingDisabled() {
+        MarkdownFormatter formatter = new MarkdownFormatter(true);
+
+        assertTrue("Syntax highlighting should be disabled", formatter.isDisableSyntaxHighlighting());
+        assertNull("Code mirror code should not be set", formatter.getCodeMirrorMode());
     }
 
     @Test
