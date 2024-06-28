@@ -119,6 +119,17 @@ x         dependency of the old JSON API from emoji-java -->
       <artifactId>commonmark-ext-ins</artifactId>
       <version>${commonmark.version}</version>
     </dependency>
+    <!-- JCasC compatibility -->
+    <dependency>
+      <groupId>io.jenkins</groupId>
+      <artifactId>configuration-as-code</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.configuration-as-code</groupId>
+      <artifactId>test-harness</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>

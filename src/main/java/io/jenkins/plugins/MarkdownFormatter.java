@@ -22,8 +22,12 @@ public class MarkdownFormatter extends MarkupFormatter {
     private static Parser markdownParser = null;
     // private static MutableDataSet options = new MutableDataSet();
 
+    private final boolean disableSyntaxHighlighting;
+
     @DataBoundConstructor
-    public MarkdownFormatter() {}
+    public MarkdownFormatter(boolean disableSyntaxHighlighting) {
+        this.disableSyntaxHighlighting = disableSyntaxHighlighting;
+    }
 
     static {
         List<org.commonmark.Extension> extensions = Arrays.asList(
@@ -39,6 +43,10 @@ public class MarkdownFormatter extends MarkupFormatter {
         markdownParser = Parser.builder().extensions(extensions).build();
     }
 
+    public boolean isDisableSyntaxHighlighting() {
+        return disableSyntaxHighlighting;
+    }
+
     @Override
     public void translate(String markup, Writer output) throws IOException {
         if (markup != null) {
@@ -47,6 +55,10 @@ public class MarkdownFormatter extends MarkupFormatter {
         } else {
             output.write("");
         }
+    }
+
+    public String getCodeMirrorMode() {
+        return disableSyntaxHighlighting ? null : "markdown";
     }
 
     @Extension
