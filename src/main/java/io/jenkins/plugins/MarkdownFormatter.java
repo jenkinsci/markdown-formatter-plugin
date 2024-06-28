@@ -24,6 +24,12 @@ public class MarkdownFormatter extends MarkupFormatter {
 
     private final boolean disableSyntaxHighlighting;
 
+    /** @deprecated */
+    @Deprecated
+    public MarkdownFormatter() {
+        this(true);
+    }
+
     @DataBoundConstructor
     public MarkdownFormatter(boolean disableSyntaxHighlighting) {
         this.disableSyntaxHighlighting = disableSyntaxHighlighting;
