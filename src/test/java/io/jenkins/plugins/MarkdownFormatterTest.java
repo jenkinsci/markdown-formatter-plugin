@@ -33,6 +33,15 @@ public class MarkdownFormatterTest {
     }
 
     @Test
+    @Deprecated
+    public void handlesSyntaxHighlightingDisabledDeprecatedConstructor() {
+        MarkdownFormatter formatter = new MarkdownFormatter();
+
+        assertTrue("Syntax highlighting should be disabled", formatter.isDisableSyntaxHighlighting());
+        assertNull("Code mirror code should not be set", formatter.getCodeMirrorMode());
+    }
+
+    @Test
     public void handlesMarkdown() throws Exception {
         // basic markdown
         assertEquals(
