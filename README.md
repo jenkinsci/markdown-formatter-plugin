@@ -1,11 +1,4 @@
-# markdown-formatter
-
-[![Build Status](https://ci.jenkins.io/job/Plugins/job/markdown-formatter-plugin/job/master/badge/icon)](https://ci.jenkins.io/job/Plugins/job/markdown-formatter-plugin/job/master/)
-[![Contributors](https://img.shields.io/github/contributors/jenkinsci/markdown-formatter-plugin.svg)](https://github.com/jenkinsci/markdown-formatter-plugin/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/release/jenkinsci/markdown-formatter-plugin.svg?label=changelog)](https://github.com/jenkinsci/markdown-formatter-plugin/releases/latest)
-[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/markdown-formatter.svg?color=blue)](https://plugins.jenkins.io/markdown-formatter)
-
-## Introduction
+# Markdown formatter
 
 Markdown Formatter allows plain text to be converted into HTML in Jenkins.
 The formatter uses [CommonMark](https://commonmark.org/).
