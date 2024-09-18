@@ -1,4 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-    This plugin adds markdown support
+    This plugin adds Markdown support for formatted text using <a href="https://commonmark.org/">CommonMark</a>.
 </div>
