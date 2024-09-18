@@ -5,10 +5,10 @@ The formatter uses [CommonMark](https://commonmark.org/).
 
 ## Getting started
 
-In Manage Jenkins -> Security -> Markup Formatter select "Markdown Formatter" from the drop down list.
+In Manage Jenkins -> Security -> Markup Formatter select "Markdown Formatter" from the drop-down list.
 
-Markdown syntax highlighting is enabled by default while editing the markdown text in the Jenkins pages.
-A configuration checkbox is available in the "Security" page to disable syntax highlighting while editing markdown text in Jenkins.
+Markdown syntax highlighting is enabled by default while editing the Markdown text in the Jenkins pages.
+A configuration checkbox is available in the "Security" page to disable syntax highlighting while editing Markdown text in Jenkins.
 
 ## Configuration as code
 
