@@ -51,7 +51,7 @@
 
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
-    <commonmark.version>0.23.0</commonmark.version>
+    <commonmark.version>0.24.0</commonmark.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
     <jenkins.baseline>2.452</jenkins.baseline>
