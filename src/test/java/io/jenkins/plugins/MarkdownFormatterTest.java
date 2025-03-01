@@ -89,9 +89,11 @@ class MarkdownFormatterTest {
                         .trim());
         // mixed xss gets escaped
         assertEquals(
-                "<p>hello &lt;a name=&quot;n&quot;</p>\n" + "<blockquote>\n"
-                        + "<p>href=&quot;javascript:alert('xss')&quot;&gt;<em>you</em>&lt;/a&gt;</p>\n"
-                        + "</blockquote>",
+                """
+                <p>hello &lt;a name=&quot;n&quot;</p>
+                <blockquote>
+                <p>href=&quot;javascript:alert('xss')&quot;&gt;<em>you</em>&lt;/a&gt;</p>
+                </blockquote>""",
                 r.jenkins
                         .getMarkupFormatter()
                         .translate("hello <a name=\"n\"\n" + "> href=\"javascript:alert('xss')\">*you*</a>")
