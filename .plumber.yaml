@@ -1,0 +1,12 @@
+# Plumber overlay: inherits the built-in defaults, only the deltas are listed.
+extends: plumber:default
+version: "2.0"
+
+github:
+  controls:
+    githubActionMustComeFromAuthorizedSources:
+      # keep the curated list of well-known publishers and trust the Jenkins
+      # infrastructure org, whose reusable workflows drive CD and triage here
+      includePlumberDefaults: true
+      trustedGithubActions:
+        - jenkins-infra/*
