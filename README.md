@@ -1,7 +1,5 @@
 # Markdown formatter
 
-[![Plumber Score](https://score.getplumber.io/github.com/jenkinsci/markdown-formatter-plugin.svg)](https://score.getplumber.io/github.com/jenkinsci/markdown-formatter-plugin)
-
 Markdown Formatter allows plain text to be converted into HTML in Jenkins.
 The formatter uses [CommonMark](https://commonmark.org/).
 

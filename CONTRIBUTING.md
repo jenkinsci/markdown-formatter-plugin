@@ -7,6 +7,13 @@ Your pull request will be evaluated by the [Jenkins job](https://ci.jenkins.io/j
 
 Before submitting your change, please assure that you've added tests which verify your change.
 
+## GitHub Actions workflows
+
+[![Plumber Score](https://score.getplumber.io/github.com/jenkinsci/markdown-formatter-plugin.svg)](https://score.getplumber.io/github.com/jenkinsci/markdown-formatter-plugin)
+
+The `plumber.yml` workflow checks the GitHub Actions workflows of this repository on every push and pull request with [Plumber](https://github.com/getplumber/plumber).
+The badge shows the score of the `master` branch.
+
 ## Code formatting
 
 Source code and pom file formatting is maintained by the `spotless` maven plugin.
