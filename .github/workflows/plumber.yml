@@ -20,7 +20,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Plumber Score
-        uses: getplumber/plumber@4804289c25a4417f689d8fdc6622a293bb47fc0e # v0.6.1
+        uses: getplumber/plumber@2342834dc0b67d2c87a33ac86789e481ad869402 # v0.7.17
         with:
           min-points: 85
           score-push: true
